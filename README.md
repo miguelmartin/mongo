@@ -1,4 +1,4 @@
-mongo
+MongoDB
 =====
 
-Aplicación python con mongodb
+Este va a ser un pequeño programa python que funcione con MongoDB.
