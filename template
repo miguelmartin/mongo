@@ -1,0 +1,39 @@
+%import pymongo
+%from pymongo import Connection
+%import datetime
+%import os
+%conn = Connection()
+%db = conn.empresa
+%trabajadores = db.trabajadores
+%cont = 0
+<html>
+<head></head>
+<body>
+<div id="principal">
+<div id="cabecera">
+<div id="logo">
+</div>
+</div>
+<table>
+<tr>
+<th scope='col'>Nombre</th>
+<th scope='col'>Fecha Nacimiento</th>
+<th scope='col'>Direccion</th>
+<th scope='col'>Borrar</th>
+<th scope='col'>Editar</th>
+</tr>
+%for trabajador in trabajadores.find():
+	%nombre = trabajador['Nombre']
+	%direccion = trabajador['Direccion']
+	%fechanac =  trabajador['FechaNac']
+	<tr>
+	<td>{{nombre}}</td>
+	<td>{{direccion}}</td>
+	<td>{{fechanac}}</td>
+	</tr>
+</table>
+</div>
+</body>
+</html>
+
+
