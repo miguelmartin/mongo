@@ -21,6 +21,7 @@
 </form>
 % if 'nombre' in locals():
 	<p>Contraseña o usuario incorrectos para el usuario {{nombre}}</p>
+	%end	
 </div>
 <div id="footer">
 <p>Esta es la gestión de usuarios de la junta de Andalucia. Powered by MongoDB</p>
