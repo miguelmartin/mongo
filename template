@@ -26,6 +26,7 @@
 <table>
 <table>
 <tr>
+<th>UID</th>
 <th>Nombre</th>
 <th>Fecha Nacimiento</th>
 <th>Direccion</th>
@@ -36,7 +37,9 @@
         %nombre = trabajador['Nombre']
         %direccion = trabajador['Direccion']
         %fechanac =  trabajador['FechaNac']
+	%uid = trabajador['Uid']
 	<tr>
+	<td>{{uid}}</td>
 	<td>{{nombre}}</td>
         <td>{{fechanac}}</td>
 	<td>{{direccion}}</td>
