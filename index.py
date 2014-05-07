@@ -1,20 +1,17 @@
-from bottle import route, request, run, view, template
+from bottle import route, request, run, view, template, static_file
 from passlib.apps import custom_app_context as pwd_context
 import pymongo
 from pymongo import Connection
 import datetime
 import os
 
+@route('/static/<filepath:path>')
+def server_static(filepath):
+    return static_file(filepath, root='static')
 
 @route('/')
 def login():
-    return '''
-        <form action="/gestion_usuarios" method="post">
-            Username: <input name="username" type="text" />
-            Password: <input name="password" type="password"/>
-            <input value="Login" type="submit" />
-        </form>
-    '''
+	return template('inicio')
 
 @route('/gestion_usuarios', method='POST')
 @view('form_template')
@@ -26,7 +23,7 @@ def do_login():
     if username == "admin" and ok == True:
 		return template('template') 
     else:
-		return "Necesita ser adminitrador para acceder"
+		return template('inicio',nombre=username)
 
 run(host='localhost', port=8020)
 
