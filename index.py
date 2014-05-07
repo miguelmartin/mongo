@@ -9,14 +9,14 @@ import os
 @route('/')
 def login():
     return '''
-        <form action="/login" method="post">
+        <form action="/gestion_usuarios" method="post">
             Username: <input name="username" type="text" />
             Password: <input name="password" type="password"/>
             <input value="Login" type="submit" />
         </form>
     '''
 
-@route('/login', method='POST')
+@route('/gestion_usuarios', method='POST')
 @view('form_template')
 def do_login():
     username = request.forms.get('username')
