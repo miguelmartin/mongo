@@ -1,3 +1,4 @@
+%from bottle import route, request, run, view, template, static_file
 %import pymongo
 %from pymongo import Connection
 %import datetime
@@ -24,10 +25,15 @@
 <div id="cuerpo">
 <h2><a name="2012-2013">Gestion de usuarios</a></h2>
 <table>
-<table>
 <tr>
+%@route('/adduser')
+%def login():
+%        return template('adduser')
+%	 end
+<div id="add"><a href="/adduser"><img src="static/add.jpg" alt="add-jpg"  height="20" width="20"/>Añadir usuario nuevo</a></div>
 <th>UID</th>
 <th>Nombre</th>
+<th>Apellidos</th>
 <th>Fecha Nacimiento</th>
 <th>Direccion</th>
 <th>Borrar</th>
@@ -38,9 +44,11 @@
         %direccion = trabajador['Direccion']
         %fechanac =  trabajador['FechaNac']
 	%uid = trabajador['Uid']
+	%apellidos = trabajador['Apellidos']
 	<tr>
 	<td>{{uid}}</td>
 	<td>{{nombre}}</td>
+	<td>{{apellidos}}</td>
         <td>{{fechanac}}</td>
 	<td>{{direccion}}</td>
 	<td><a href="2012-13/jbq.pdf"><img src="static/borrar.jpg" alt="Borrar-jpg"  height="20" width="20"/></a></td>
