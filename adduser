@@ -27,7 +27,7 @@
         %end
 
 %@post('/gestion_usuarios') # or @route('/login', method='POST')
-%def do_login():
+%def add_user():
 %	nombrenuevo = request.forms.get('nombre')
 %	apellidonuevo = request.forms.get('apellidos')
 %	direccionnuevo =  request.forms.get('direccion')
