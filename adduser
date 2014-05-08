@@ -1,3 +1,4 @@
+%from bottle import route, request, run, view, template, static_file, post
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -17,14 +18,39 @@
 <form action="/gestion_usuarios" method="post">
             Nombre: <input name="nombre" type="text" /></br>
             Apellidos: <input name="apellidos" type="text"/></br>
-	    Direccion: <input name="apellidos" type="text"/></br>
-            Fecha Nacimiento: <input name="apellidos" type="text"/></br>
+	    Direccion: <input name="direccion" type="text"/></br>
+            Fecha Nacimiento: <input name="fechanac" type="text"/>
 
-            <input value="Login" type="submit" />
+            <input value="Añadir" type="submit" />
+% if 'valorerroneo' in locals():
+        <p>Falta algún campo</p>
+        %end
+
+%@post('/gestion_usuarios') # or @route('/login', method='POST')
+%def do_login():
+%	nombrenuevo = request.forms.get('nombre')
+%	apellidonuevo = request.forms.get('apellidos')
+%	direccionnuevo =  request.forms.get('direccion')
+% 	fechanacnuevo = request.forms.get('fechanac')
+%	if nombrenuevo == "" or apellidonuevo == "" or direccionnuevo == "" or fechanacnuevo == "":
+%		return template('adduser', valorerroneo='si')
+%		end
+%	import pymongo
+%	from pymongo import Connection
+%	import datetime
+%	import os
+%	conn = Connection()
+%	db = conn.empresa
+%	trabajadores = db.trabajadores
+%	for trabajador in trabajadores.find().sort([('Uid', pymongo.DESCENDING)]).limit(1):
+%       	ultimouid = trabajador['Uid']
+%		nuevouid = int(ultimouid)+1
+%		end
+%	registronuevo = {"Nombre": nombrenuevo, "Apellidos": apellidonuevo, "FechaNac": fechanacnuevo, "Direccion": direccionnuevo, "Uid": nuevouid }
+%	trabajadores.insert(registronuevo)
+%	return template('template')
+%	end
 </form>
-% if 'nombre' in locals():
-	<p>Contraseña o usuario incorrectos para el usuario {{nombre}}</p>
-	%end	
 </div>
 <div id="footer">
 <p>Esta es la gestión de usuarios de la junta de Andalucia. Powered by MongoDB</p>
