@@ -77,8 +77,7 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
     empty-cells: show;
-    margin: 20px;
-    margin-left:380px;
+    margin:0px auto;
 }
 #add {
     border-collapse: collapse;
@@ -86,6 +85,12 @@ table {
     empty-cells: show;
     margin: 20px;
     margin-left:380px;
+}
+#salir {
+    border-collapse: collapse;
+    border-spacing: 0;
+    empty-cells: show;
+    margin: 470px 0px 0px 0px;
 }
 
 a {
@@ -104,4 +109,8 @@ a {
     font-weight: 300;
     margin: 0;
     padding: 2px 0 0;
+}
+p {
+margin:0px auto;
+
 }
