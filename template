@@ -51,13 +51,22 @@
 	<td>{{apellidos}}</td>
         <td>{{fechanac}}</td>
 	<td>{{direccion}}</td>
-	<td><a href="2012-13/jbq.pdf"><img src="static/borrar.jpg" alt="Borrar-jpg"  height="20" width="20"/></a></td>
-    	<td><a href="2012-13/jbq-2.pdf"><img src="static/editar.jpg" alt="editar-jpg"  height="20" width="20"/></a></td>
+	<td><a href="{{uid}}"><img src="static/borrar.jpg" alt="Borrar-jpg"  height="20" width="20"/></a></td>
+    	<td><a href="/editar/{{uid}}"><img src="static/editar.jpg" alt="editar-jpg"  height="20" width="20"/></a></td>
 	</tr>
-	%end	
-
+	%end
+	
+%@route('/:uid')
+%def borrar(uid):
+%	return template('confirmar', uid=uid)       
+%	end
+%@route('/editar/:uid')
+%def editar(uid):
+%       return template('editar', uid=uid)
+%       end	
 </table>
 </div>
+<div id="salir"><p><a href="/">Salir</a></p></div>
 <div id="footer">
 <p>Esta es la gestión de usuarios de la junta de Andalucia. Powered by MongoDB</p>
 <p><a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Strict" height="31" width="88" /></a> <a href="http://jigsaw.w3.org/css-validator/check/referer">
