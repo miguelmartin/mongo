@@ -14,11 +14,13 @@
 </div>
 <div id="cuerpo">
 <h2><a name="2012-2013">Gestion de usuarios</a></h2>
+<center>
 <form action="/gestion_usuarios" method="post">
             Usuario: <input name="username" type="text" /></br>
             Contraseña: <input name="password" type="password"/></br>
             <input value="Login" type="submit" />
 </form>
+</center>
 % if 'nombre' in locals():
 	<p>Contraseña o usuario incorrectos para el usuario {{nombre}}</p>
 	%end	
