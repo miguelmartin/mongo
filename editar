@@ -24,7 +24,9 @@
 <div id="cuerpo">
 <h2><a name="2012-2013">Gestion de usuarios</a></h2>
 </div>
-<h1> Se editando el siguiente usuario usuario </h1>
+<center>
+<h1 id="editar"> Se esta editando el siguiente usuario usuario </h1></br>
+<div id="tabla">
 <table>
 <tr>
 <th>UID</th>
@@ -51,18 +53,32 @@
         <td>{{fechanac}}</td>
         <td>{{direccion}}</td>
 	%end
-</table>
-<form action="/editar" method="post">
-            Uid : <input type="text" name="uid" value={{uid}} readonly /></br>
-	    Nombre: <input name="nombre" type="text" value={{nombre}} /></br>
-            Apellidos: <input name="apellidos" type="text" value={{apellidos}}/></br>
-            Direccion: <input name="direccion" type="text" value={{fechanac}}/></br>
-            Fecha Nacimiento: <input name="fechanac" type="text" value={{direccion}}/>
+</table></br>
+</div>
+<form action="/editando" method="post">
+            Uid :</br> <input type="text" name="uid" value="{{uid}}" readonly /></br>
+	    Nombre: <input name="nombre" type="text" value="{{nombre}}" /></br>
+            Apellidos: <input name="apellidos" type="text" value="{{apellidos}}"/></br>
+            Direccion: <input name="direccion" type="text" value="{{fechanac}}"/></br>
+            Fecha Nacimiento: <input name="fechanac" type="text" value="{{direccion}}"/>
 
             <input value="Hacer cambios" type="submit" />
 </form>
-%@post('/editar')
-%def borrar():
+</center>
+%@post('/editando')
+%def editando():
+%       nombrenuevo = request.forms.get('nombre')
+%       apellidonuevo = request.forms.get('apellidos')
+%       direccionnuevo =  request.forms.get('direccion')
+%       fechanacnuevo = request.forms.get('fechanac')
+%       if nombrenuevo == "" or apellidonuevo == "" or direccionnuevo == "" or fechanacnuevo == "":
+%               return template('adduser', valorerroneo='si')
+%               end
+%	uidnuevo = int(uid)
+%	updater = """trabajadores.update({"Uid": %s}, {"$set":{"Apellidos": "%s", "Nombre": "%s", "FechaNac": "%s", "Direccion": "%s"}})"""
+%	updater = updater % (uidnuevo,apellidonuevo,nombrenuevo,fechanacnuevo,direccionnuevo)
+%	print updater
+%	exec(updater)
 %       return template('template')
 %       end
 
