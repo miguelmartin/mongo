@@ -15,6 +15,7 @@
 </div>
 <div id="cuerpo">
 <h2><a name="2012-2013">Gestion de usuarios</a></h2>
+<center>
 <form action="/gestion_usuarios" method="post">
             Nombre: <input name="nombre" type="text" /></br>
             Apellidos: <input name="apellidos" type="text"/></br>
@@ -22,6 +23,7 @@
             Fecha Nacimiento: <input name="fechanac" type="text"/>
 
             <input value="Añadir" type="submit" />
+</center>
 % if 'valorerroneo' in locals():
         <p>Falta algún campo</p>
         %end
