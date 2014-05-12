@@ -1,5 +1,4 @@
 form { 
-margin-left:400px;
 align: center; 
 width:250px;
 
@@ -9,12 +8,14 @@ body {
     font-family: Arial,sans-serif;
     font-size: 13px;
     margin: 0;
+    height:100%;
 }
 title {
  text-align: left;
 }
 #contenido {
     margin: 0 auto;
+    min-height:90%;
 }
 #cabecera {
     background: url("logo.jpg") no-repeat scroll 8px 8px #5882FA;
@@ -23,10 +24,13 @@ title {
     padding-top: 20px;
     text-align: center;
 }
+#tabla {
+     width:650px; margin:0 auto;
+}
 #cuerpo {
-    float: left;
-    margin: 0 0 0 8px;
+    margin: 0 auto;
     padding: 8px 0;
+    text-align:center;
 }
 #menu {
     background-color: #000000;
@@ -53,6 +57,13 @@ margin:0;
 text-align:right;
 margin-right:20px;
 }
+
+#editar {
+margin:0;
+text-align:center;
+margin-right:20px;
+}
+
 h2, h3 {
     margin: 0;
 }
@@ -77,20 +88,19 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
     empty-cells: show;
-    margin:0px auto;
+    text-align:center;
 }
 #add {
     border-collapse: collapse;
     border-spacing: 0;
     empty-cells: show;
     margin: 20px;
-    margin-left:380px;
 }
 #salir {
     border-collapse: collapse;
     border-spacing: 0;
     empty-cells: show;
-    margin: 470px 0px 0px 0px;
+   text-align:center;
 }
 
 a {
@@ -103,6 +113,7 @@ a {
     margin: 0 8px 8px;
     padding: 2px 0 0;
     text-align: right;
+    height:10%;
 }
 #footer p {
     background-color: #FFFFFF;
